@@ -32,7 +32,7 @@
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 ;; Calls (package-initialize)
-(require 'init-elpa)      ;; Machinery for installing required packages
+(require 'init-china-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
 ;;----------------------------------------------------------------------------
@@ -87,7 +87,7 @@
 (require 'init-textile)
 (require 'init-markdown)
 (require 'init-csv)
-(require 'init-erlang)
+;; (require 'init-erlang)
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-org)
@@ -96,20 +96,20 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-http)
-(require 'init-python)
-(require 'init-haskell)
-(require 'init-elm)
-(require 'init-purescript)
-(require 'init-ruby)
-(require 'init-rails)
+;; (require 'init-python)
+;; (require 'init-haskell)
+;; (require 'init-elm)
+;; (require 'init-purescript)
+;; (require 'init-ruby)
+;; (require 'init-rails)
 (require 'init-sql)
-(require 'init-rust)
-(require 'init-toml)
-(require 'init-yaml)
-(require 'init-docker)
-(require 'init-terraform)
+;; (require 'init-rust)
+;; (require 'init-toml)
+;; (require 'init-yaml)
+;; (require 'init-docker)
+;; (require 'init-terraform)
 ;;(require 'init-nix)
-(maybe-require-package 'nginx-mode)
+;; (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)
 (require 'init-lisp)
@@ -129,6 +129,11 @@
 ;;(require 'init-twitter)
 ;; (require 'init-mu)
 (require 'init-ledger)
+
+;; my extra packages
+(require 'init-ggtags)
+
+
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
