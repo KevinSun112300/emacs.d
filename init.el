@@ -90,6 +90,7 @@
 ;; (require 'init-erlang)
 (require 'init-javascript)
 (require 'init-php)
+(require 'init-java)
 (require 'init-org)
 (require 'init-nxml)
 (require 'init-html)
@@ -117,6 +118,8 @@
 (require 'init-clojure)
 (require 'init-clojure-cider)
 (require 'init-common-lisp)
+(require 'init-c)
+
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -176,6 +179,8 @@
 ;;----------------------------------------------------------------------------
 (require 'init-local nil t)
 
+
+(require 'init-my)
 
 
 (provide 'init)
