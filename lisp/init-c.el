@@ -8,15 +8,25 @@
 ;;; install and config rtags.
 (defun setup-flycheck-rtags ()
   (interactive)
-  (define-key c-mode-base-map (kbd "M-.")
-    (function rtags-find-symbol-at-point))
-  (define-key c-mode-base-map (kbd "M-,")
-    (function rtags-find-references-at-point))
+  (if (not (or (equal major-mode 'php-mode) (equal major-mode 'java-mode) ) )
+      (progn
+        (message "not php-mode or java-mode init rtag flycheck")
+        (define-key c-mode-base-map (kbd "M-.")
+          (function rtags-find-symbol-at-point))
+        (define-key c-mode-base-map (kbd "M-,")
+          (function rtags-find-references-at-point))
 
-  (flycheck-select-checker 'rtags)
-  ;; RTags creates more accurate overlays.
-  (setq-local flycheck-highlighting-mode nil)
-  (setq-local flycheck-check-syntax-automatically nil))
+        (flycheck-select-checker 'rtags)
+        ;; RTags creates more accurate overlays.
+        (setq-local flycheck-highlighting-mode nil)
+        (setq-local flycheck-check-syntax-automatically nil)
+        )
+
+    (message "php-mode or java-mode do nothing")
+    )
+
+
+  )
 
 (when (maybe-require-package 'rtags)
   ;; make sure you have company-mode installed
@@ -39,6 +49,7 @@
   (require 'flycheck-rtags)
   ;; c-mode-common-hook is also called by c++-mode
   (add-hook 'c-mode-common-hook #'setup-flycheck-rtags)
+
 
 
   )
