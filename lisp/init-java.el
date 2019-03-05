@@ -28,6 +28,26 @@
     )
 
   )
+(defun eclim-maven-run-class-my ()
+  "Execute a mvn exec:java goal for current file buffer."
+  (interactive "")
+
+  (let* ((package (save-excursion
+                    (goto-char (point-min))
+                    (when (re-search-forward "^\\s *package\\s +\\(.*\\);" (point-max) t)
+                      (match-string 1)))
+                  )
+         (className (file-name-sans-extension
+                     (file-name-nondirectory (buffer-file-name))))
+         )
+    (if package
+        (eclim--maven-execute (concat "exec:java -Dexec.mainClass=" package "." className))
+      (message "can not read package from this buffer"))
+
+
+    )
+  )
+
 
 
 ;;meghanada
