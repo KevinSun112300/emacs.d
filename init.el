@@ -88,6 +88,7 @@
 (require 'init-markdown)
 (require 'init-csv)
 ;; (require 'init-erlang)
+(require 'init-yasnippet)
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-java)
