@@ -22,6 +22,28 @@
         (mvn (concat "exec:java -Dexec.mainClass=" package "." className))
       (message "can not read package from this buffer"))
     ))
+(defun mvn-create-project-my (groupId artifacId archetypeArtifactId dir)
+  "Create a maven project.  GROUPID ARTIFACID ARCHETYPEARTIFACTID DIR."
+  (interactive (list
+                (read-string "groupId:")
+                (read-string "artifacId:")
+                (completing-read "archetypeArtifactId:" '(
+                                                          "maven-archetype-simple"
+                                                          "maven-archetype-quickstart"
+                                                          "maven-archetype-webapp")
+                                 )
+                (read-directory-name "project root dir:")
+                ))
+  (message (concat "going to create maven project with\n groupId: " groupId
+                   "\nartifacId: "  artifacId
+                   "\narchetypeArtifactId: " archetypeArtifactId))
+  (let ((default-directory dir))
+    (compile (concat "mvn " "archetype:generate -DgroupId="
+                     groupId
+                     " -DartifactId=" artifacId
+                     " -DarchetypeArtifactId=" archetypeArtifactId
+                     " -DinteractiveMode=false") ))
+  )
 
 ;;eclim
 ;; (defun my-java-mode-hook ()
