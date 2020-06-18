@@ -57,6 +57,10 @@
 
   )
 
+(when (maybe-require-package 'gradle-mode)
+  (maybe-require-package 'flycheck-gradle)
+
+  )
 
 ;;eclim
 ;; (defun my-java-mode-hook ()
