@@ -15,7 +15,20 @@
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
-
+(when (eq system-type 'windows-nt)
+  (setq-default buffer-file-coding-system 'utf-8-unix)
+  (set-terminal-coding-system 'utf-8)
+  (set-language-environment 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (setq explicit-shell-file-name
+        "C:/Program Files/Git/bin/bash.exe")
+  (setq shell-file-name explicit-shell-file-name)
+  (add-to-list 'exec-path "C:/Program Files/Git/bin")
+  )
 ;;----------------------------------------------------------------------------
 ;; Adjust garbage collection thresholds during startup, and thereafter
 ;;----------------------------------------------------------------------------
